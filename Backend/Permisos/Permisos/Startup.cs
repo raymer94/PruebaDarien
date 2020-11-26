@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using DataAccess.Models;
 
 namespace Permisos
 {
@@ -25,6 +27,7 @@ namespace Permisos
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<PermisosContext>(Opc => Opc.UseSqlServer(@"Server=DESKTOP-70SA4GV\RAYMER; initial catalog=test;Integrated security=True"));
             services.AddControllers();
         }
 
