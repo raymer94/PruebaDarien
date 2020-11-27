@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using DataAccess.Models;
+using System.Web.Http;
 
 namespace Permisos
 {
@@ -29,6 +30,15 @@ namespace Permisos
         {
             services.AddDbContext<PermisosContext>(Opc => Opc.UseSqlServer(@"Server=DESKTOP-70SA4GV\RAYMER; initial catalog=test;Integrated security=True"));
             services.AddControllers();
+            //services.AddCors(options => options.AddDefaultPolicy(builder => builder.AllowAnyOrigin()));
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsApi",
+                    builder => builder.SetIsOriginAllowed(isOriginAllowed: _ => true)
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +52,8 @@ namespace Permisos
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("AllowAll");
 
             app.UseAuthorization();
 

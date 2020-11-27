@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using DataServicesAccess;
 using DataAccess.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace Permisos.Controllers
 {
+    [EnableCors("CorsApi")]
     [Route("api/[controller]")]
     [ApiController]
     public class PermisosController : ControllerBase
