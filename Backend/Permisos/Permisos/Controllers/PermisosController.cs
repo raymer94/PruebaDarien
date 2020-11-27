@@ -38,7 +38,7 @@ namespace Permisos.Controllers
         }
 
         // PUT: api/Permisos/5
-        [HttpPut]
+        [HttpPut("{id}")]
         public void Put([FromBody] Permiso permisos)
         {
             _dataServices.UpdatePermiso(permisos);

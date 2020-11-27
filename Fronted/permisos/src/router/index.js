@@ -4,7 +4,8 @@ import EmpRegister from '../components/EmpRegister.vue'
 
 const routes = [
   { path: '/', name: "EmpList", component: EmpList },
-  { path: '/register', name: "EmpRegister", component: EmpRegister }
+  { path: '/register', name: "EmpRegister", component: EmpRegister },
+  { path: '/edit/:id', name: "EmpUpdate", component: EmpRegister }
 ];
 
 const router = new VueRouter({

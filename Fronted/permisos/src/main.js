@@ -6,11 +6,9 @@ import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import VueSweetalert2 from 'vue-sweetalert2';
 
-
 Vue.config.productionTip = false
 Vue.use(VueSweetalert2);
 Vue.use(VueRouter);
-
 
 new Vue({
   router,

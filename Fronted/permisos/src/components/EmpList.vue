@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>Lista de Empleados</h1>
+    <h1>Lista de permisos</h1>
     <div class="container">
       <div>
         <router-link to="/register">
@@ -24,10 +24,8 @@
             <td>{{permit.tipoPermiso}}</td>
             <td>{{permit.fechaPermiso}}</td>
             <td>
-              <button class="btn btn-primary actionButton" v-on:click="editPermit(permit.id)">
-                <i class="fas fa-pencil" aria-hidden="true"></i>
-                </button> 
-              <button class="btn btn-danger" v-on:click="delPermit(permit.id)">X</button>
+              <button class="btn btn-primary actionButton" v-on:click="editPermit(permit.id)">Update</button> 
+              <button class="btn btn-danger" v-on:click="delPermit(permit.id)">Delete</button>
             </td>
           </tr>
         </tbody>
@@ -44,6 +42,11 @@ import axios from "axios";
     const res = await axios.get("https://localhost:44315/api/Permisos")
     return res.data;
   }
+
+function editPermit(id){
+    window.location.href = '/edit/'+ id;
+}
+
   async function delPermit(Id) {
 
     Swal.fire({
@@ -80,6 +83,7 @@ import axios from "axios";
       }
     },
     methods: {
+      editPermit,
       delPermit
     },
     async created() {
